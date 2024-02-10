@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nth-child Selector</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: #0079FF;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .container {
+            width: 50%;
+            /* margin: auto; */
+            padding: 30px;
+            background-color: #00DFA2;
+
+        }
+
+        h1 {
+            color: #FAEF5D;
+            font-size: 3rem;
+            padding-bottom: 20px;
+        }
+
+        .box {
+            display: flex;
+            justify-content: space-around;
+        }
+
+        li {
+            width: 50px;
+            height: 50px;
+            list-style: none;
+            border-radius: 50%;
+            box-shadow: 0 0 5px black;
+        }
+
+        .btns {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        button {
+            width: 320px;
+            background-color: #FAEF5D;
+            margin: 10px 20px;
+            font-size: 1.2rem;
+            padding: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:focus {
+            background-color: #FF0060;
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Nth:child Selector</h1>
+        <div class="box">
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </div>
+        <div class="btns">
+            <button class="first" onclick="nthChild(':first-child', 'red')">:first-child</button>
+            <button onclick="nthChild(':last-child', 'red')">:last-child</button>
+            <button onclick="nthChild(':nth-child(5)')">:nth-child(5)</button>
+            <button onclick="nthChild(':nth-last-child(2)')">:nth-last-child(2)</button>
+            <button onclick="nthChild(':nth-child(odd)')">:nth-child(odd)</button>
+            <button onclick="nthChild(':nth-child(even)')">:nth-child(even)</button>
+            <button onclick="nthChild(':nth-child(n+4)')">:nth-child(n+4)</button>
+            <button onclick="nthChild(':nth-child(3n-1)')">:nth-child(3n-1)</button>
+            <button onclick="nthChild(':nth-child(3n+1)')">:nth-child(3n+1)</button>
+            <button onclick="nthChild(':nth-child(4n)')">:nth-child(4n)</button>
+            <button onclick="nthChild(':nth-child(n+4):nth-child(-n+6)')">:nth-child(n+4):nth-child(-n+6)</button>
+            <button onclick="nthChild(':nth-child(n+2):nth-child(-n+8)')">:nth-child(n+2):nth-child(-n+8)</button>
+        </div>
+    </div>
+
+    <script>
+
+        function nthChild(selector, color) {
+            const elements = document.querySelectorAll('.box li');
+            elements.forEach(element => {
+                element.classList.remove('selected');
+                element.style.backgroundColor = '';
+            });
+            const selectedElements = document.querySelectorAll('.box li' + selector);
+            selectedElements.forEach(element => {
+                element.classList.add('selected');
+                element.style.backgroundColor = "#FF0060";
+            });
+        }
+
+
+    </script>
+</body>
+
+</html>
